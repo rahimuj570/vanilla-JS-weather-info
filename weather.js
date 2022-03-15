@@ -4,7 +4,7 @@ const getElem = (idClass) => document.getElementById(idClass);
 
 // ======== Fetch City ======
 const fetchCity = (search) => {
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${API_Key}`;
+  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${API_Key}&units=metric`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => fetchData(data))
@@ -50,6 +50,91 @@ const searchUiAction = (data) => {
   </p>
 </div>`;
   mainCardContainer.appendChild(mainCard);
+
+  //   ----- Details Section ----
+  const moreDetailsContainer = getElem("moreDetails");
+  moreDetailsContainer?.childNodes[3]?.remove();
+  const moreDetails = document.createElement("tbody");
+  moreDetails.innerHTML = `
+  <tr>
+  <th scope="row">01</th>
+  <td class="table-active text-start" colspan="2">
+    Temperature:
+  </td>
+  <td>${main.temp}℃</td>
+</tr>
+  <tr>
+  <th scope="row">02</th>
+  <td class="table-active text-start" colspan="2">
+    Feels:
+  </td>
+  <td>${main.feels_like}℃</td>
+</tr>
+  <tr>
+  <th scope="row">03</th>
+  <td class="table-active text-start" colspan="2">
+    Minimum Temperature:
+  </td>
+  <td>${main.temp_min}℃</td>
+</tr>
+  <tr>
+  <th scope="row">04</th>
+  <td class="table-active text-start" colspan="2">
+    Maximum Temperature:
+  </td>
+  <td>${main.temp_max}℃</td>
+</tr>
+  <tr>
+  <th scope="row">05</th>
+  <td class="table-active text-start" colspan="2">
+    Pressure:
+  </td>
+  <td>${main.pressure}mbar</td>
+</tr>
+  <tr>
+  <th scope="row">06</th>
+  <td class="table-active text-start" colspan="2">
+    Humidity:
+  </td>
+  <td>${main.humidity}%</td>
+</tr>
+  <tr>
+  <th scope="row">07</th>
+  <td class="table-active text-start" colspan="2">
+    Visibility:
+  </td>
+  <td>${visibility}m</td>
+</tr>
+  <tr>
+  <th scope="row">08</th>
+  <td class="table-active text-start" colspan="2">
+    Sunrise:
+  </td>
+  <td>${new Date(sys.sunrise * 1000)}</td>
+</tr>
+  <tr>
+  <th scope="row">09</th>
+  <td class="table-active text-start" colspan="2">
+    Sunset:
+  </td>
+  <td>${new Date(sys.sunset * 1000)}</td>
+</tr>
+  <tr>
+  <th scope="row">10</th>
+  <td class="table-active text-start" colspan="2">
+    Wind Speed:
+  </td>
+  <td>${wind.speed}km/h</td>
+</tr>
+  <tr>
+  <th scope="row">11</th>
+  <td class="table-active text-start" colspan="2">
+    Wind Direction:
+  </td>
+  <td>${wind.deg}degree</td>
+</tr>
+`;
+  moreDetailsContainer.appendChild(moreDetails);
 };
 
 // ======= Search Handler ======
