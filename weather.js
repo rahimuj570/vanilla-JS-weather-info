@@ -29,7 +29,27 @@ const searchBtnAction = () => {
 
 // ====== Search UI Action ======
 const searchUiAction = (data) => {
-  console.log(data);
+  const { weather, main, visibility, wind, clouds, sys, name, timezone } = data;
+  const mainCardContainer = getElem("main-card");
+  mainCardContainer?.childNodes[3]?.remove();
+  const mainCard = document.createElement("div");
+  mainCard.classList.add("mx-auto");
+  mainCard.classList.add("card");
+  mainCard.setAttribute("style", "width:18rem");
+  mainCard.innerHTML = `<div class="bg-light">
+  <img
+    src="http://openweathermap.org/img/w/${weather[0].icon}.png"
+    class="card-img-top w-25 mx-auto"
+    alt="..."
+  />
+</div>
+<div class="card-body">
+  <h4 class="fw-bold">${name}</h4>
+  <p class="text-capitalize card-text">
+  ${weather[0].description}
+  </p>
+</div>`;
+  mainCardContainer.appendChild(mainCard);
 };
 
 // ======= Search Handler ======
