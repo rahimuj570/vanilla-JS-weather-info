@@ -7,7 +7,7 @@ const fetchCity = (search) => {
   getElem("default").style.display = "none";
   getElem("loader").style.display = "inline-block";
   getElem("loader2").style.display = "inline-block";
-  const url = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${API_Key}&units=metric`;
+  const url = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${API_Key}&units=metric`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => fetchData(data))
@@ -18,7 +18,7 @@ const fetchCity = (search) => {
 const fetchData = (data) => {
   const lat = data[0].lat;
   const lon = data[0].lon;
-  const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_Key}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_Key}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => searchUiAction(data));
