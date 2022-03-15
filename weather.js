@@ -4,6 +4,9 @@ const getElem = (idClass) => document.getElementById(idClass);
 
 // ======== Fetch City ======
 const fetchCity = (search) => {
+  getElem("default").style.display = "none";
+  getElem("loader").style.display = "inline-block";
+  getElem("loader2").style.display = "inline-block";
   const url = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${API_Key}&units=metric`;
   fetch(url)
     .then((res) => res.json())
@@ -135,6 +138,8 @@ const searchUiAction = (data) => {
 </tr>
 `;
   moreDetailsContainer.appendChild(moreDetails);
+  getElem("loader2").style.display = "none";
+  getElem("loader").style.display = "none";
 };
 
 // ======= Search Handler ======
@@ -143,6 +148,7 @@ getElem("search-btn").addEventListener("click", searchBtnAction);
 // ======= Search Handler By ENTER======
 getElem("search-input").addEventListener("keyup", (event) => {
   if (event.key == "Enter") {
+    getElem("search-input").blur();
     searchBtnAction();
   }
 });

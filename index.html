@@ -16,48 +16,65 @@
     />
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-6">
-            <!-- ----- Search Bar ----- -->
-            <div class="my-5 input-group mb-3">
-              <input
-                id="search-input"
-                placeholder="Input The City"
-                type="text"
-                class="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-              />
-              <button
-                class="fw-bold input-group-text bg-primary text-white"
-                id="search-btn"
-              >
-                Search
-              </button>
-            </div>
-            <!-- ----- Main Card ----- -->
-            <div id="main-card">
-              <!-- -------- 
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-6">
+          <!-- ----- Search Bar ----- -->
+          <div class="my-5 input-group mb-3">
+            <input
+              id="search-input"
+              placeholder="Input The City"
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
+            <button
+              class="fw-bold input-group-text bg-primary text-white"
+              id="search-btn"
+            >
+              Search
+            </button>
+          </div>
+          <!-- ----- Main Card ----- -->
+          <div
+            id="loader"
+            style="height: 125px; display: none"
+            class="w-25 m-3 spinner-grow"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div id="main-card">
+            <!-- -------- 
                 Dynamic Main Card 
                 -------- -->
-            </div>
-          </div>
-          <!-- ---- More Details Card --- -->
-          <div class="my-md-5 my-0 col-md-6">
-            <h2 class="my-md-0 mt-5 fw-bold">More Details</h2>
-            <table id="moreDetails" class="table table-bordered border-primary">
-              <tbody>
-                <!-- ----- 
-                    Dynamic More Details Section 
-                 ----- -->
-              </tbody>
-            </table>
           </div>
         </div>
+        <!-- ---- More Details Card --- -->
+        <div class="mt-md-5 mt-0 col-md-6">
+          <h2 class="my-md-0 mt-5 fw-bold">More Details</h2>
+          <div
+            id="loader2"
+            style="height: 125px; display: none"
+            class="w-25 m-3 spinner-grow"
+            role="status"
+          >
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <table id="moreDetails" class="table table-bordered border-primary">
+            <tbody>
+              <!-- ----- 
+                    Dynamic More Details Section 
+                 ----- -->
+            </tbody>
+          </table>
+        </div>
       </div>
-    </header>
+    </div>
+    <div id="default" class="mt-0 w-50 mx-auto">
+      <img class="w-100" src="./weather.gif" alt="rahimuj570" />
+    </div>
     <!-- JavaScript Linked -->
     <script src="./weather.js"></script>
   </body>
